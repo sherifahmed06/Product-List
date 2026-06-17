@@ -202,7 +202,7 @@ function displayCart(){
 
                         </div>
                         <div class="order-confirmation mt-2">
-                            <button class="py-3 w-100">Confirm Order</button>
+                            <button class="py-3 w-100" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="displayModal()">Confirm Order</button>
                         </div>
     `
     if(cart.length > 0){
@@ -239,6 +239,71 @@ function deleteItem(index){
     countSpans[originalIndex].textContent = 1;
 
     displayCart();
+}
+
+let modalBody = document.querySelector('.modal-body')
+function displayModal(){
+    let cartona=''
+    let total = 0;
+    for (let i = 0; i < cart.length; i++) {
+        total += cart[i].price * cart[i].quantity;
+        cartona+=`
+        <div class="ordered-items">
+                            <div class="cart-ordered d-flex align-items-center justify-content-between p-3">
+                                <div class="d-flex">
+                                    <div class="order-details d-flex align-items-center gap-3">
+                                        <div class="ordered-img">
+                                            <img src="${cart[i].image}" class="w-100" alt="">
+                                        </div>
+                                        <div class="order-name-quanitity">
+                                            <h6 class="fw-bold">${cart[i].name}</h6>
+                                            <span class="me-3 fw-bold">${cart[i].quantity}x</span>
+                                            <span>@ $${cart[i].price}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="order-price">
+                                    <p class="fw-bold">$${cart[i].price * cart[i].quantity}</p>
+                                </div>
+                            </div>
+                        </div>
+        `
+        
+    }
+    cartona+=`
+    <div class="order-verify p-3 d-flex justify-content-between align-items-center">
+                            <p class="my-0 py-0">Order Total</p>
+                            <p class="fw-bold my-0 py-0">$${total.toFixed(2)}</p>
+                        </div>
+                        `
+    modalBody.innerHTML = cartona
+}
+
+
+function startNewOrder() {
+
+    cart = [];
+
+    for (let i = 0; i < cartAdd.length; i++) {
+        cartAdd[i].classList.remove('d-none');
+        cartCount[i].classList.add('d-none');
+    }
+
+    let images = document.querySelectorAll('.img-container img');
+    for (let i = 0; i < images.length; i++) {
+        images[i].classList.remove('selected-border');
+    }
+
+    let countSpans = document.querySelectorAll('.cart-count span');
+    for (let i = 0; i < countSpans.length; i++) {
+        countSpans[i].textContent = 1;
+    }
+
+    displayCart();
+
+    bootstrap.Modal.getInstance(
+        document.getElementById('staticBackdrop')
+    ).hide();
 }
 
 

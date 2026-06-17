@@ -165,7 +165,61 @@ body{
     border: 2px solid var(--buttons-color) !important;
 }
 
+.modal-content{
+    background-color: var(--white-color);
+    border-radius: 15px;
+}
+.cart-ordered {
+    background-color: var(--main-background-color);
+}
+.ordered-img {
+    width: 15%;
+}
+.order-name-quanitity h6{
+    color: var(--items-main-color);
+}
+.order-name-quanitity span:nth-child(2){
+    color: var(--buttons-color) !important;
+}
+.order-name-quanitity span:last-child{
+    color: var(--items-sub-color) !important;
+}
+.order-price p{
+    color: var(--items-main-color);
+}
+.modal-header h1{
+    color: var(--items-main-color);
+    font-size: 40px !important;
+}
+.modal-header p{
+    color: var(--items-main-color);
+    font-size: 16px !important;
+}
+.modal-footer{
+    border-top: none;
+}
+.modal-footer button{
+    background-color: var(--buttons-color);
+    color: var(--button-txt-color);
+    border-radius: 50px;
+}
+.modal-footer button:hover{
+    background-color: var(--buttons-color);
+    color: var(--button-txt-color);
+}
+.order-verify{
+    background-color: var(--main-background-color);
+}
+.order-verify p:first-child{
+    color: var(--items-main-color);
+    font-size: 18px;
+    font-weight: 500;
 
+}
+.order-verify p:last-child{
+    font-size: 24px;
+    color: var(--items-main-color);
+}
 
 #theme-toggle {
     position: fixed;
