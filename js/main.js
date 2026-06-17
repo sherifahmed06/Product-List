@@ -256,7 +256,7 @@ function displayModal(){
                                             <img src="${cart[i].image}" class="w-100" alt="">
                                         </div>
                                         <div class="order-name-quanitity">
-                                            <h6 class="fw-bold">${cart[i].name}</h6>
+                                            <h6 class="fw-bold">${shortName(cart[i].name)}</h6>
                                             <span class="me-3 fw-bold">${cart[i].quantity}x</span>
                                             <span>@ $${cart[i].price}</span>
                                         </div>
@@ -304,6 +304,16 @@ function startNewOrder() {
     bootstrap.Modal.getInstance(
         document.getElementById('staticBackdrop')
     ).hide();
+}
+
+function shortName(name){
+    let words = name.split(' ');
+
+    if(words.length > 3){
+        return words.slice(0,3).join(' ') + '...';
+    }
+
+    return name;
 }
 
 
