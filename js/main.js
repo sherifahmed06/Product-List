@@ -64,6 +64,8 @@ const allItems = [
     }
 ];
 
+const successSound = new Audio('./sounds/coin_sound.mp3');
+
 let cart = [];
 
 function displayItems(){
@@ -276,6 +278,7 @@ function displayModal(){
                             <p class="fw-bold my-0 py-0">$${total.toFixed(2)}</p>
                         </div>
                         `
+    successSound.play();
     modalBody.innerHTML = cartona
 }
 
